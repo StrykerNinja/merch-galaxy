@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanConverter", "RomanConv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanConverter.Tests", "RomanConverter.Tests\RomanConverter.Tests.csproj", "{7929F55B-50B0-4B01-A1BB-6DA8D8E543F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantNotes", "MerchantNotes\MerchantNotes.csproj", "{C2D1197F-0CCF-4A75-9EE2-85A85D6BB4B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantNotes.Tests", "MerchantNotes.Tests\MerchantNotes.Tests.csproj", "{B5D17588-7415-49F5-A73A-37BAF2A9414D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{7929F55B-50B0-4B01-A1BB-6DA8D8E543F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7929F55B-50B0-4B01-A1BB-6DA8D8E543F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7929F55B-50B0-4B01-A1BB-6DA8D8E543F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2D1197F-0CCF-4A75-9EE2-85A85D6BB4B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2D1197F-0CCF-4A75-9EE2-85A85D6BB4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2D1197F-0CCF-4A75-9EE2-85A85D6BB4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2D1197F-0CCF-4A75-9EE2-85A85D6BB4B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D17588-7415-49F5-A73A-37BAF2A9414D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D17588-7415-49F5-A73A-37BAF2A9414D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D17588-7415-49F5-A73A-37BAF2A9414D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D17588-7415-49F5-A73A-37BAF2A9414D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
