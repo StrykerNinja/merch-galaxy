@@ -11,10 +11,11 @@
         {
             new CurrencyAssignmentParsingRule(),
             new MaterialAssignmentParsingRule(),
-            new ManyQuestionParsingRule()
+            new ManyQuestionParsingRule(),
+            new MuchQuestionParsingRule()
         };
-        private static Dictionary<string, string> _currencyConversion = new Dictionary<string, string> { { "glob", "i" }, { "prok", "v" }, { "pish", "x" }, { "tegj", "l" } };
-        private static Dictionary<string, float> _materials = new Dictionary<string, float> { { "silver", 17.0f }, { "gold", 14450.0f }, { "iron", 195.5f } };
+        private static Dictionary<string, string> _currencyConversion = new Dictionary<string, string>();
+        private static Dictionary<string, float> _materials = new Dictionary<string, float>();
         public const string ERROR_MESSAGE = "I have no idea what you are talking about";
 
         static void Main(string[] args)

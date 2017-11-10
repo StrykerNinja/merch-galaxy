@@ -108,5 +108,20 @@
             // assert
             result.ShouldBe(expected);
         }
+
+        public void ShouldReturnCorrectMessageWhenMultipleValidCurrency()
+        {
+            // arrange
+            var textToTest = "how much is pish tegj glob glob?";
+            var currencies = new Dictionary<string, string> { { "pish", "X" }, { "tegj", "L" }, { "glob", "I" } };
+            var rule = new MuchQuestionParsingRule();
+            var expected = "pish tegj glob glob is 42";
+
+            // act
+            var result = rule.Process(textToTest, currencies, null);
+
+            // assert
+            result.ShouldBe(expected);
+        }
     }
 }
