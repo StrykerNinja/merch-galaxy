@@ -48,7 +48,8 @@
   <ItemGroup>
     <Compile Include="Chain\MaterialAssignmentParsingRuleTests.cs" />
     <Compile Include="Chain\CurrencyAssignmentParsingRuleTests.cs" />
-    <Compile Include="Chain\QuestionParsingRuleTests.cs" />
+    <Compile Include="Chain\ManyQuestionParsingRuleTests.cs" />
+    <Compile Include="Chain\MuchQuestionParsingRuleTests.cs" />
     <Compile Include="FixieSetup\TestingConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

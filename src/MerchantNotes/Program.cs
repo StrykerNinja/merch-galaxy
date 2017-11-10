@@ -5,16 +5,17 @@
     using System.Linq;
     using System.Collections.Generic;
 
-    class Program
+    public class Program
     {
         private static ParsingRuleBase[] _parsingRules = new ParsingRuleBase[]
         {
             new CurrencyAssignmentParsingRule(),
             new MaterialAssignmentParsingRule(),
-            new QuestionParsingRule()
+            new ManyQuestionParsingRule()
         };
-        private static Dictionary<string, char> _currencyConversion = new Dictionary<string, char>() { { "glob", 'i' }, { "prok", 'v' }, { "pish", 'x' }, { "tegj", 'l' } };
-        private static HashSet<string> _materials = new HashSet<string>() { "silver", "gold", "iron" };
+        private static Dictionary<string, string> _currencyConversion = new Dictionary<string, string> { { "glob", "i" }, { "prok", "v" }, { "pish", "x" }, { "tegj", "l" } };
+        private static Dictionary<string, float> _materials = new Dictionary<string, float> { { "silver", 17.0f }, { "gold", 14450.0f }, { "iron", 195.5f } };
+        public const string ERROR_MESSAGE = "I have no idea what you are talking about";
 
         static void Main(string[] args)
         {
@@ -28,11 +29,11 @@
                     var parseRule = _parsingRules.SingleOrDefault(pr => pr.Handles(text));
                     if (parseRule == null)
                     {
-                        Console.WriteLine("I have no idea what you are talking about");
+                        Console.WriteLine(ERROR_MESSAGE);
                     }
                     else
                     {
-                        var output = parseRule.Parse(text, _currencyConversion, _materials);
+                        var output = parseRule.Process(text, _currencyConversion, _materials);
                         if (!string.IsNullOrWhiteSpace(output))
                         {
                             Console.WriteLine(output);

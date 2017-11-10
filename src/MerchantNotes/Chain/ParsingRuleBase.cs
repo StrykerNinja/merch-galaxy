@@ -5,6 +5,6 @@
     public abstract class ParsingRuleBase
     {
         public abstract bool Handles(string input);
-        public abstract string Parse(string input, Dictionary<string, char> currencyConverters, HashSet<string> materials);
+        public abstract string Process(string input, Dictionary<string, string> currencyConverters, Dictionary<string, float> materials);
     }
 }

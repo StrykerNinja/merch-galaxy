@@ -2,9 +2,22 @@
 {
     using MerchantNotes.Chain;
     using Shouldly;
+    using System.Collections.Generic;
 
     public class MaterialAssignmentParsingRuleTests
     {
+        public void ShouldNotHandleWhenTextIsNull()
+        {
+            // arrange
+            string textToTest = null;
+            var rule = new MaterialAssignmentParsingRule();
+
+            // act
+            var result = rule.Handles(textToTest);
+
+            // assert
+            result.ShouldBe(false);
+        }
         public void ShouldNotHandleWhenTextIsEmpty()
         {
             // arrange
@@ -33,6 +46,18 @@
         {
             // arrange
             var textToTest = "endswithquestionmark?";
+            var rule = new MaterialAssignmentParsingRule();
+
+            // act
+            var result = rule.Handles(textToTest);
+
+            // assert
+            result.ShouldBe(false);
+        }
+        public void ShouldNotHandleWhenTextStartsWithHow()
+        {
+            // arrange
+            var textToTest = "hownowbrowncow";
             var rule = new MaterialAssignmentParsingRule();
 
             // act
@@ -101,6 +126,79 @@
 
             // assert
             result.ShouldBe(true);
+        }
+
+        public void ShouldReturnErrorMessageWhenNoValidCurrency()
+        {
+            // arrange
+            var textToTest = "nope material is num credits";
+            var materials = new Dictionary<string, float>();
+            var currencies = new Dictionary<string, string> { { "curr", "X" } };
+            var rule = new MaterialAssignmentParsingRule();
+
+            // act
+            var result = rule.Process(textToTest, currencies, materials);
+
+            // assert
+            result.ShouldBe(Program.ERROR_MESSAGE);
+        }
+        public void ShouldReturnErrorMessageWhenNoValidRoman()
+        {
+            // arrange
+            var textToTest = "curr material is num credits";
+            var materials = new Dictionary<string, float>();
+            var currencies = new Dictionary<string, string> { { "curr", "Z" } };
+            var rule = new MaterialAssignmentParsingRule();
+
+            // act
+            var result = rule.Process(textToTest, currencies, materials);
+
+            // assert
+            result.ShouldBe(Program.ERROR_MESSAGE);
+        }
+        public void ShouldReturnErrorMessageWhenInvalidNumberOfCredits()
+        {
+            // arrange
+            var textToTest = "curr material is num credits";
+            var materials = new Dictionary<string, float>();
+            var currencies = new Dictionary<string, string> { { "curr", "X" } };
+            var rule = new MaterialAssignmentParsingRule();
+
+            // act
+            var result = rule.Process(textToTest, currencies, materials);
+
+            // assert
+            result.ShouldBe(Program.ERROR_MESSAGE);
+        }
+        public void ShouldReturnErrorMessageWhenZeroCredits()
+        {
+            // arrange
+            var textToTest = "curr material is 0 credits";
+            var materials = new Dictionary<string, float>();
+            var currencies = new Dictionary<string, string> { { "curr", "X" } };
+            var rule = new MaterialAssignmentParsingRule();
+
+            // act
+            var result = rule.Process(textToTest, currencies, materials);
+
+            // assert
+            result.ShouldBe(Program.ERROR_MESSAGE);
+        }
+
+        public void ShouldReturnEmptyStringAndHaveMaterialsUpdated()
+        {
+            // arrange
+            var textToTest = "curr material is 500 credits";
+            var materials = new Dictionary<string, float>();
+            var currencies = new Dictionary<string, string> { { "curr", "X" } };
+            var rule = new MaterialAssignmentParsingRule();
+
+            // act
+            var result = rule.Process(textToTest, currencies, materials);
+
+            // assert
+            result.ShouldBe(string.Empty);
+            materials.ShouldContainKeyAndValue("material", 50f);
         }
     }
 }
